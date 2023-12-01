@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP32 and DHT11 Setup Guide</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid white;
+        }
+        h2 {
+            border-bottom: 1px solid white;
+            padding-bottom: 10px;
+        }
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+        .button {
+            background-color: white; 
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        .copy-button {
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ESP32 and DHT11 Setup Guide</h1>
+
+        <div class="step">
+            <h2>Step 1: Code</h2>
+            <p>Hardware connections:</p>
+            <ul>
+                <li>dht: SDA to esp: D15</li>
+                <li>dht: VCC to esp: 3V3</li>
+                <li>dht: GND to esp: GND</li>
+            </ul>
+            <a href="code.txt" download class="button">Download Code</a>
+            <p>Note- change wifi and thingspeak channel details only in the code. Any other changes not required</p>
+        </div>
+
+        <div class="step">
+            <h2>Step 2: Adding Index Path in Arduino IDE Preferences</h2>
+            <p>File -&gt; Preferences -&gt; Additional Board Manager Paths</p>
+            <p>Index Path:</p>
+            <input type="text" value="https://espressif.github.io/arduino-esp32/package_esp32_index.json" id="indexPath" readonly>
+            <button onclick="copyToClipboard('indexPath')" class="copy-button">Copy</button>
+            <p>paste path in additional board Manager, Search for 'esp 32' and install the board for ESP32.</p>
+        </div>
+
+        <div class="step">
+            <h2>Step 3: Install Libraries from Library Manager</h2>
+            <p>Required Libraries:</p>
+            <ul>
+                <li>ThingSpeak </li>
+                <li>Optional - DHT Sensor library for ESPx </li>
+            </ul>
+            <p>Select ESP32 WROOM-DA* board and respective port for compiling the code </p>
+            <p>Try to execute, if port is undetected go for step 4.</p>
+        </div>
+
+        <div class="step">
+            <h2>Step 4: Driver Installation</h2>
+            <p><a href="https://www.silabs.com/documents/public/software/CP210x_VCP_Windows.zip">Download CP210x VCP Windows Drivers</a></p>
+            <p>After download, extract the zip file and install the driver, then recheck compiling code.</p>
+            <p>Note: This code and drivers may change according to the board/hardware you use. Here, we are using ESP32 WROOM-DA* board and DHT11 sensor.</p>
+        </div>
+
+        <div class="feedback">
+            <h2>Feedback/Queries</h2>
+            <p>Email: <a href="mailto:ps@telegmail.com">ps@telegmail.com</a></p>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 @PS</p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            var copyText = document.getElementById(elementId);
+            copyText.select();
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+</html>
